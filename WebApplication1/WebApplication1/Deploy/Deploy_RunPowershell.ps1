@@ -90,6 +90,8 @@ configuration MyWeb
     }
 }
 
+Copy-Item -Path "$SourcePath\DSCModule\xWebAdministration" -Destination "$dscModulePath" -Recurse -Force
+
 #$env:PSModulePath
 MyWeb
 
