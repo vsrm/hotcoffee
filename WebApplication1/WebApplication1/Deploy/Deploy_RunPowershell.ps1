@@ -90,20 +90,20 @@ configuration MyWeb
     }
 }
 
-$env:PSModulePath
+#$env:PSModulePath
 MyWeb
-
-# copy the modules and build
 
 $SecurePassword = ConvertTo-SecureString –String $Password –AsPlainText -Force
 $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $UserName, $SecurePassword
 
+# copy the modules and build
 $psSessionOption = New-PSSessionOption -SkipCACheck
 $psSession = New-PSSession -ComputerName $NodeName -Credential $cred -Port $PublicEndpoint -SessionOption $psSessionOption -Authentication Negotiate -UseSSL
 Copy-Item -Path $SourcePath -Destination $StagingPath -ToSession $psSession -Recurse -Force
 Copy-Item -Path "$SourcePath\DSCModule\xWebAdministration" -Destination "$dscModulePath" -ToSession $psSession -Recurse -Force
 Remove-PSSession -Session $psSession
 
+#do actual deployment
 $cimSessionOption = New-CimSessionOption -UseSsl -SkipCACheck
 $cimSession = New-CimSession -SessionOption $cimSessionOption -ComputerName $NodeName -Port $PublicEndpoint -Authentication Negotiate -Credential $cred
 Start-DscConfiguration -CimSession $cimSession -Path .\MyWeb -Verbose -Wait -Force
