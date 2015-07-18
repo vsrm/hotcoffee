@@ -103,7 +103,9 @@
     <Content Include="Deploy\Deploy_RunPowershell.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Deploy\Deploy.ps1" />
+    <Content Include="Deploy\Deploy.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="DSCModule\xWebAdministration\DSCResources\MSFT_xIisModule\MSFT_xIisModule.psm1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
