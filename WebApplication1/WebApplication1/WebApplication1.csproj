@@ -58,6 +58,61 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Deploy\DeployWebsite_Configuration.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Deploy\DeployWebsite.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DSCModule\xWebAdministration\DSCResources\MSFT_xWebApplication\MSFT_xWebApplication.psm1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DSCModule\xWebAdministration\DSCResources\MSFT_xWebApplication\MSFT_xWebApplication.schema.mof">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DSCModule\xWebAdministration\DSCResources\MSFT_xWebAppPool\MSFT_xWebAppPool.psm1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DSCModule\xWebAdministration\DSCResources\MSFT_xWebAppPool\MSFT_xWebAppPool.schema.mof">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DSCModule\xWebAdministration\DSCResources\MSFT_xWebConfigKeyValue\MSFT_xWebConfigKeyValue.psm1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DSCModule\xWebAdministration\DSCResources\MSFT_xWebConfigKeyValue\MSFT_xWebConfigKeyValue.schema.mof">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DSCModule\xWebAdministration\DSCResources\MSFT_xWebsite\MSFT_xWebsite.psm1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DSCModule\xWebAdministration\DSCResources\MSFT_xWebsite\MSFT_xWebsite.schema.mof">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DSCModule\xWebAdministration\DSCResources\MSFT_xWebVirtualDirectory\MSFT_xWebVirtualDirectory.psm1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DSCModule\xWebAdministration\DSCResources\MSFT_xWebVirtualDirectory\MSFT_xWebVirtualDirectory.schema.mof">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DSCModule\xWebAdministration\TechNetDocumentation_xWebAdministration.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DSCModule\xWebAdministration\xWebAdministration.psd1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Deploy\Deploy_RunPowershell.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Deploy\Deploy.ps1" />
+    <Content Include="DSCModule\xWebAdministration\DSCResources\MSFT_xIisModule\MSFT_xIisModule.psm1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DSCModule\xWebAdministration\DSCResources\MSFT_xIisModule\MSFT_xIisModule.schema.mof">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DSCModule\xWebAdministration\DSCResources\MSFT_xIisModule\xIisModuleDesigner.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -100,6 +155,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DSCModule\xWebAdministration\DSCResources\MSFT_WebConfigConnectionString\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
