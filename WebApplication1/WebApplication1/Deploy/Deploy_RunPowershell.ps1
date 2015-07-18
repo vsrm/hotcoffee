@@ -1,16 +1,16 @@
 param
 (
     # Target nodes to apply the configuration
-    [string]$NodeName =  "myhotcofeevm.cloudapp.net",
+    [string]$NodeName =  "myshuttlevmqa.cloudapp.net",
 
 	# Admin user name for the target node
-	[String]$UserName = ".\myadmin",
+	[String]$UserName = ".\vijayma",
 
 	# Password to connect to the target node
-    [String]$Password = "Microsoft~1",
+    [String]$Password = "Password~1",
 
 	# WinRM port to connect to the target on
-	[Int]$PublicEndpoint = 49876,
+	[Int]$PublicEndpoint = 50050,
 
 	# Location of the source deployment bits and DSC Module
 	[String]$SourcePath =  "c:\temp\bin",
@@ -28,7 +28,7 @@ param
     [String]$WebSiteName =  "remotehc",
 	
 	# IIS Port to host the website on
-    [Int]$Port = 1100
+    [Int]$Port = 11001
 )
 
 configuration MyWeb
