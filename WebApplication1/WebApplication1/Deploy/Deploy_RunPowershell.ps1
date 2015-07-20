@@ -92,7 +92,8 @@ configuration MyWeb
 
 Copy-Item -Path "$SourcePath\DSCModule\xWebAdministration" -Destination "$dscModulePath" -Recurse -Force
 
-#$env:PSModulePath
+Write-Verbose -Verbose $env:PSModulePath
+Write-Verbose -Verbose $SourcePath
 MyWeb
 
 $SecurePassword = ConvertTo-SecureString –String $Password –AsPlainText -Force
@@ -101,11 +102,15 @@ $cred = new-object -typename System.Management.Automation.PSCredential -argument
 # copy the modules and build
 $psSessionOption = New-PSSessionOption -SkipCACheck
 $psSession = New-PSSession -ComputerName $NodeName -Credential $cred -Port $PublicEndpoint -SessionOption $psSessionOption -Authentication Negotiate -UseSSL
+Write-Verbose -Verbose "Created PS Session to $NodeName : $PublicEndpoint"
 Copy-Item -Path $SourcePath -Destination $StagingPath -ToSession $psSession -Recurse -Force
+Write-Verbose -Verbose "copied from $SourcePath on agent to $StagingPath on $NodeName"
 Copy-Item -Path "$SourcePath\DSCModule\xWebAdministration" -Destination "$dscModulePath" -ToSession $psSession -Recurse -Force
+Write-Verbose -Verbose "copied from $SourcePath\DSCModule\xWebAdministration on agent to $dscModulePath on $NodeName"
 Remove-PSSession -Session $psSession
 
 #do actual deployment
 $cimSessionOption = New-CimSessionOption -UseSsl -SkipCACheck
 $cimSession = New-CimSession -SessionOption $cimSessionOption -ComputerName $NodeName -Port $PublicEndpoint -Authentication Negotiate -Credential $cred
+Write-Verbose -Verbose "Starting DSC Configuration"
 Start-DscConfiguration -CimSession $cimSession -Path .\MyWeb -Verbose -Wait -Force
