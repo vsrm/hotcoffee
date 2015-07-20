@@ -58,12 +58,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Deploy\DeployWebsite_Configuration.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Deploy\DeployWebsite.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Deploy\DeployWebsite_Configuration.ps1" />
+    <Content Include="Deploy\DeployWebsite.ps1" />
     <Content Include="DSCModule\xWebAdministration\DSCResources\MSFT_xWebApplication\MSFT_xWebApplication.psm1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -100,12 +96,10 @@
     <Content Include="DSCModule\xWebAdministration\xWebAdministration.psd1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Deploy\Deploy_RunPowershell.ps1">
+    <Content Include="Deploy\CopyFilesToRemoteMachine.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Deploy\Deploy.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Deploy\Deploy.ps1" />
     <Content Include="DSCModule\xWebAdministration\DSCResources\MSFT_xIisModule\MSFT_xIisModule.psm1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -115,10 +109,10 @@
     <Content Include="DSCModule\xWebAdministration\DSCResources\MSFT_xIisModule\xIisModuleDesigner.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Deploy\CopyFilesToRemoteMachines.ps1">
+    <Content Include="Deploy\InstallDSCModuleOnAgent.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Deploy\DSCDeploy.ps1">
+    <Content Include="Deploy\DeployWebsiteRemote.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Web.Debug.config">

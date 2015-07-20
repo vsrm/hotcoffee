@@ -12,9 +12,6 @@ param
 	# WinRM port to connect to the target on
 	[Int]$PublicEndpoint = 50050,
 
-	# Location of the source deployment bits and DSC Module
-	[String]$SourcePath =  "c:\temp\bin",
-
 	# Temporary Location on target to copy the deployment bits to
 	[String]$StagingPath =  "c:\temp",
 
@@ -31,11 +28,7 @@ param
     [Int]$Port = 11001
 )
 
-Write-Verbose -Verbose $env:PSModulePath
-Write-Verbose -Verbose $SourcePath
-
-
- configuration MyWeb
+configuration MyWeb
   {
 	# Import the module that defines custom resources
     Import-DscResource -Module xWebAdministration
