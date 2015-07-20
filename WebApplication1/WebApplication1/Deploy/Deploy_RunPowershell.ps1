@@ -31,6 +31,10 @@ param
     [Int]$Port = 11001
 )
 
+Write-Verbose -Verbose $env:PSModulePath
+Write-Verbose -Verbose $SourcePath
+
+
 configuration MyWeb
 {
 	# Import the module that defines custom resources
@@ -90,10 +94,8 @@ configuration MyWeb
     }
 }
 
-Copy-Item -Path "$SourcePath\DSCModule\xWebAdministration" -Destination "$dscModulePath" -Recurse -Force
+#Copy-Item -Path "$SourcePath\DSCModule\xWebAdministration" -Destination "$dscModulePath" -Recurse -Force
 
-Write-Verbose -Verbose $env:PSModulePath
-Write-Verbose -Verbose $SourcePath
 MyWeb
 
 $SecurePassword = ConvertTo-SecureString –String $Password –AsPlainText -Force
