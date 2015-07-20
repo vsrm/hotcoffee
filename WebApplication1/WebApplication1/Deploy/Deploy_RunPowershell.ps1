@@ -35,64 +35,64 @@ Write-Verbose -Verbose $env:PSModulePath
 Write-Verbose -Verbose $SourcePath
 
 
-configuration MyWeb
-{
+# configuration MyWeb
+# {
 	# Import the module that defines custom resources
     # Import-DscResource -Module xWebAdministration
 	# Import-DscResource -Module PSDesiredStateConfiguration
 
-    Node $NodeName
-    {	
+  #   Node $NodeName
+   #  {	
         # Install the ASP .NET 4.5 role
-        WindowsFeature AspNet45
-        {
-            Ensure          = "Present"
-            Name            = "Web-Asp-Net45"
-        }
+     #    WindowsFeature AspNet45
+       #  {
+         #    Ensure          = "Present"
+           #  Name            = "Web-Asp-Net45"
+        # }
 
         # Install the IIS role
-        WindowsFeature IIS
-        {
-            Ensure          = "Present"
-            Name            = "Web-Server"
-        }
+        # WindowsFeature IIS
+        # {
+          #   Ensure          = "Present"
+            # Name            = "Web-Server"
+        # }
 
         # Stop the default website
-        xWebsite DefaultSite 
-        {
-            Ensure          = "Present"
-            Name            = "Default Web Site"
-            State           = "Stopped"
-            PhysicalPath    = "C:\inetpub\wwwroot"
-            DependsOn       = "[WindowsFeature]IIS"
-        }
+        # xWebsite DefaultSite 
+        # {
+          #   Ensure          = "Present"
+            # Name            = "Default Web Site"
+            # State           = "Stopped"
+            # PhysicalPath    = "C:\inetpub\wwwroot"
+            # DependsOn       = "[WindowsFeature]IIS"
+        # }
 
         # Copy the website content
-        File WebContent
-        {
-            Ensure          = "Present"
-            SourcePath      = "$StagingPath\bin"
-            DestinationPath = $DestinationPath
-            Recurse         = $true
-            Type            = "Directory"
-            DependsOn       = "[WindowsFeature]AspNet45"
-        }       
+        # File WebContent
+        # {
+          #   Ensure          = "Present"
+            # SourcePath      = "$StagingPath\bin"
+            # DestinationPath = $DestinationPath
+            # Recurse         = $true
+            # Type            = "Directory"
+            # DependsOn       = "[WindowsFeature]AspNet45"
+        # }       
 
         # Create the new Website
-        xWebsite NewWebsite
-        {#
-            Ensure          = "Present"
-            Name            = $WebSiteName
-            State           = "Started"
-            PhysicalPath    = $DestinationPath
-            BindingInfo     = MSFT_xWebBindingInformation  
-            {  
-                Protocol              = "HTTP"
-                Port                  = $Port
-            }
-        }
-    }
-}
+        # xWebsite NewWebsite
+        # {
+          #   Ensure          = "Present"
+            # Name            = $WebSiteName
+            # State           = "Started"
+            # PhysicalPath    = $DestinationPath
+            # BindingInfo     = MSFT_xWebBindingInformation  
+            # {  
+              #   Protocol              = "HTTP"
+                # Port                  = $Port
+            # }
+        # }
+    # }
+# }
 
 #Copy-Item -Path "$SourcePath\DSCModule\xWebAdministration" -Destination "$dscModulePath" -Recurse -Force
 
