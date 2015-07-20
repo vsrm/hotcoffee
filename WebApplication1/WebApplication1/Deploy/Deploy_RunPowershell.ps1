@@ -33,7 +33,8 @@ param
 
 Write-Verbose -Verbose $env:PSModulePath
 Write-Verbose -Verbose $SourcePath
-
+$loc = Get-Location
+Write-Verbose -Verbose $loc.Path
 
 # configuration MyWeb
 # {
