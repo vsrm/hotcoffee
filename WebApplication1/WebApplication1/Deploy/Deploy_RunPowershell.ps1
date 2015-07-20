@@ -38,8 +38,8 @@ Write-Verbose -Verbose $SourcePath
 configuration MyWeb
 {
 	# Import the module that defines custom resources
-    Import-DscResource -Module xWebAdministration
-	Import-DscResource -Module PSDesiredStateConfiguration
+    # Import-DscResource -Module xWebAdministration
+	# Import-DscResource -Module PSDesiredStateConfiguration
 
     Node $NodeName
     {	
@@ -96,7 +96,7 @@ configuration MyWeb
 
 #Copy-Item -Path "$SourcePath\DSCModule\xWebAdministration" -Destination "$dscModulePath" -Recurse -Force
 
-MyWeb
+#MyWeb
 
 $SecurePassword = ConvertTo-SecureString –String $Password –AsPlainText -Force
 $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $UserName, $SecurePassword
@@ -112,7 +112,7 @@ Write-Verbose -Verbose "copied from $SourcePath\DSCModule\xWebAdministration on 
 Remove-PSSession -Session $psSession
 
 #do actual deployment
-$cimSessionOption = New-CimSessionOption -UseSsl -SkipCACheck
-$cimSession = New-CimSession -SessionOption $cimSessionOption -ComputerName $NodeName -Port $PublicEndpoint -Authentication Negotiate -Credential $cred
+#$cimSessionOption = New-CimSessionOption -UseSsl -SkipCACheck
+#$cimSession = New-CimSession -SessionOption $cimSessionOption -ComputerName $NodeName -Port $PublicEndpoint -Authentication Negotiate -Credential $cred
 Write-Verbose -Verbose "Starting DSC Configuration"
-Start-DscConfiguration -CimSession $cimSession -Path .\MyWeb -Verbose -Wait -Force
+#Start-DscConfiguration -CimSession $cimSession -Path .\MyWeb -Verbose -Wait -Force
