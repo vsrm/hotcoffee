@@ -16,16 +16,16 @@ param
 	[String]$SourcePath =  "c:\temp\bin",
 
 	# Temporary Location on target to copy the deployment bits to
-	[String]$StagingPath =  "c:\temp",
-
-	# Destination path for the DSC module
-	[String]$dscModulePath = "C:\Program Files\WindowsPowerShell\Modules"	
+	[String]$StagingPath =  "c:\temp"	
 )
 
 Write-Verbose -Verbose $env:PSModulePath
 Write-Verbose -Verbose $SourcePath
 $loc = Get-Location
 Write-Verbose -Verbose $loc.Path
+
+$dscModulePath = $env:PSModulePath.Split(';')[1]
+Write-Verbose -Verbose $dscModulePath
 
 $SecurePassword = ConvertTo-SecureString –String $Password –AsPlainText -Force
 $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $UserName, $SecurePassword
