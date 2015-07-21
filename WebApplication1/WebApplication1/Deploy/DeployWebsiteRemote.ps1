@@ -1,13 +1,15 @@
+# Deploys website on remote target machine using a cimsession created on agent
+
 param
 (
     # Target nodes to apply the configuration
-    [string]$NodeName =  "myshuttlevmqa.cloudapp.net",
+    [string]$NodeName =  "",
 
 	# Admin user name for the target node
-	[String]$UserName = ".\vijayma",
+	[String]$UserName = "",
 
 	# Password to connect to the target node
-    [String]$Password = "Password~1",
+    [String]$Password = "",
 
 	# WinRM port to connect to the target on
 	[Int]$PublicEndpoint = 50050,
@@ -15,9 +17,6 @@ param
 	# Temporary Location on target to copy the deployment bits to
 	[String]$StagingPath =  "c:\temp",
 
-	# Destination path for the DSC module
-	[String]$dscModulePath = "C:\Program Files\WindowsPowerShell\Modules",
-	
 	# Destination path for Website content
     [String]$DestinationPath =  "C:\inetpub\wwwroot\remotehc",
 
@@ -32,7 +31,7 @@ configuration MyWeb
   {
 	# Import the module that defines custom resources
     Import-DscResource -Module xWebAdministration
-	# Import-DscResource -Module PSDesiredStateConfiguration
+	Import-DscResource -Module PSDesiredStateConfiguration
 
      Node $NodeName
     {	

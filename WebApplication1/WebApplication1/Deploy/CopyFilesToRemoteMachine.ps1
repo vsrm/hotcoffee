@@ -1,13 +1,15 @@
+# Copies the deployment payload and DSCModule from Agent machine to target machine using Remote PS Session
+
 param
 (
     # Target nodes to apply the configuration
-    [string]$NodeName =  "myshuttlevmqa.cloudapp.net",
+    [string]$NodeName =  "",
 
 	# Admin user name for the target node
-	[String]$UserName = ".\vijayma",
+	[String]$UserName = "",
 
 	# Password to connect to the target node
-    [String]$Password = "Password~1",
+    [String]$Password = "",
 
 	# WinRM port to connect to the target on
 	[Int]$PublicEndpoint = 50050,
@@ -19,13 +21,19 @@ param
 	[String]$StagingPath =  "c:\temp"	
 )
 
-Write-Verbose -Verbose $env:PSModulePath
-Write-Verbose -Verbose $SourcePath
+Write-Verbose -Verbose "Running with PSModulePath as $env:PSModulePath"
+Write-Verbose -Verbose "NodeName $NodeName"
+Write-Verbose -Verbose "UserName $UserName"
+Write-Verbose -Verbose "Password $Password"
+Write-Verbose -Verbose "PublicEndpoint $PublicEndpoint"
+Write-Verbose -Verbose "SourcePath $SourcePath"
+Write-Verbose -Verbose "StagingPath $StagingPath"
+
 $loc = Get-Location
-Write-Verbose -Verbose $loc.Path
+Write-Verbose -Verbose "Current Working Directory $loc.Path"
 
 $dscModulePath = $env:PSModulePath.Split(';')[0]
-Write-Verbose -Verbose $dscModulePath
+Write-Verbose -Verbose "Chosen DSC Module Path $dscModulePath"
 
 $SecurePassword = ConvertTo-SecureString –String $Password –AsPlainText -Force
 $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $UserName, $SecurePassword
