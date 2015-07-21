@@ -24,7 +24,7 @@ Write-Verbose -Verbose $SourcePath
 $loc = Get-Location
 Write-Verbose -Verbose $loc.Path
 
-$dscModulePath = $env:PSModulePath.Split(';')[1]
+$dscModulePath = $env:PSModulePath.Split(';')[0]
 Write-Verbose -Verbose $dscModulePath
 
 $SecurePassword = ConvertTo-SecureString –String $Password –AsPlainText -Force
